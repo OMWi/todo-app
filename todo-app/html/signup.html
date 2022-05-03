@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/signup.css">
+    <title>Sign up</title>
+</head>
+<body class="auth-body">
+    <main class="auth-main">
+        <div class="logo">
+            <img class="logo-img logo-img-small" src="../images/logo.png">
+            <p class="logo-name">todo</p>
+        </div>
+        <p class="auth-name">Sign up</p>
+        <form class="auth-form" action="signin.html" method="POST">
+            <p>Username:</p>            
+            <input type="text" name="username" value="">
+            <p>Email:</p>
+            <input type="email" name="email" value="">
+            <p>Password</p>
+            <input class='form-input' type="password" name="password" value="">
+            <button class="button" id="signup-button" type="submit" name="button">Sign up</button>
+        </form>
+        <p class="auth-text">Already signed up? Go to <a href="../html/login.html"><span class="auth-link">login</span></a></p>
+    </main>    
+</body>
+</html>
