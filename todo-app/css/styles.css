@@ -19,6 +19,10 @@ body {
     border: 2px solid;
 }
 
+.background {
+    background-color: blue;
+}
+
 img {
     object-fit: contain;
 }
@@ -29,7 +33,7 @@ a {
 
 header.header {
     background-color: #F3F2F1;
-    height: 80px;
+    height: 60px;
 }
 
 .container {    
@@ -93,6 +97,7 @@ header.header {
     border-radius: 0.75rem;
     text-decoration: none;
     font-weight: 600;
+    font-size: 1.5em;
 }
 
 .full-height-grow {
@@ -161,7 +166,6 @@ header.header {
 
 .auth-form button {
     margin-bottom: 0.5rem;
-    font-size: 1.5em;
 }
 
 .auth-text {

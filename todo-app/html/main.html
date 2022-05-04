@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../fontawesome/css/all.css">
+    <title>todo</title>
+    <script>
+        function onclickSidemenu() {
+            if (document.getElementById("sidemenu").style.width === "300px") {
+                document.getElementById("sidemenu").style.width = "0px";
+                document.getElementById("sidemenu").style.minWidth = "0px";
+                document.getElementsByTagName("main").style.marginLeft = "0px";
+            }
+            else {
+                document.getElementById("sidemenu").style.width = "300px";
+                document.getElementById("sidemenu").style.minWidth = "300px";
+                document.getElementsByTagName("main").style.marginLeft = "300px";
+            }
+        }
+    </script>
+</head>
+
+<body class="full-height-grow">
+    <header class="header">
+        <div class="left-header-block">
+            <i onclick="onclickSidemenu()" class="fa-solid fa-bars fa-2xl"></i>
+            <form class="search-form" action="index.html" method="GET">
+                <input class='search-input' type="text" name="search-term" value="" placeholder="Search">
+            </form>
+        </div>
+
+        <div class="right-header-block">
+            <div class="logout">
+                <p class="logout-text">Log out</p>
+                <i class="fa-solid fa-user fa-2xl"></i>
+            </div>
+        </div>
+
+
+    </header>
+
+    <div class="app-holder">
+        <aside id="sidemenu" class="sidenav">
+            <p class="sidenav-name">Projects:</p>
+            <div class="project">
+                <p class="project-name">Study</p>
+                <p class="project-task-count">4</p>
+            </div>
+            <div class="create-project">
+                <div class="fa-solid fa-plus fa-xl"></div>
+                <p class="create-project-text">Create project</p>
+            </div>
+        </aside>
+        <main>
+            <section class="task-section">
+                <header class="task-section-header">
+                    <p class="task-section-name">Section name</p>
+                    <p class="section-task-count">2</p>
+                </header>
+
+                <div class="task">
+                    <header class="task-header">
+                        <div class="task-header-left">
+                            <div class="check-circle"></div>
+                            <p class="task-name">Task 1</p>
+                        </div>
+                        <i class="task-options fa-solid fa-ellipsis fa-lg"></i>
+                    </header>
+                    <p class="task-description">task1 description</p>
+                </div>
+                <div class="task">
+                    <header class="task-header">
+                        <div class="task-header-left">
+                            <div class="check-circle"></div>
+                            <p class="task-name">Task 2</p>
+                        </div>
+                        <i class="task-options fa-solid fa-ellipsis fa-lg"></i>                        
+                    </header>
+                    <p class="task-description">task2 description</p>
+                </div>
+
+                <div class="add-task">
+                    <div class="fa-solid fa-plus fa-xl"></div>
+                    <p class="add-task-text">Add task</p>
+                </div>
+            </section>
+
+            <div class="add-section">
+                <div class="fa-solid fa-plus fa-xl"></div>
+                <p class="add-section-text">Add section</p>
+            </div>
+        </main>
+    </div>
+</body>
+
+</html>
