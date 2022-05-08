@@ -11,16 +11,8 @@
     <title>todo</title>
     <script>
         function onclickSidemenu() {
-            if (document.getElementById("sidemenu").style.width === "300px") {
-                document.getElementById("sidemenu").style.width = "0px";
-                document.getElementById("sidemenu").style.minWidth = "0px";
-                document.getElementsByTagName("main").style.marginLeft = "0px";
-            }
-            else {
-                document.getElementById("sidemenu").style.width = "300px";
-                document.getElementById("sidemenu").style.minWidth = "300px";
-                document.getElementsByTagName("main").style.marginLeft = "300px";
-            }
+            document.getElementById("sidemenu").classList.toggle("sidenav-open")
+            document.getElementsByTagName("main").classList.toggle("main-sidenav-open")
         }
     </script>
 </head>
