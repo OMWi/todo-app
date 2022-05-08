@@ -153,7 +153,7 @@ header.header {
     margin-bottom: 0.75rem;
 }
 
-.auth-form p {
+.auth-form label {
     font-weight: 600;
     font-size: 1.25em;
     margin-bottom: 0.3rem;

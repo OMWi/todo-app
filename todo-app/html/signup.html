@@ -15,13 +15,13 @@
             <p class="logo-name">todo</p>
         </div>
         <p class="auth-name">Sign up</p>
-        <form class="auth-form" action="signin.html" method="POST">
-            <p>Username:</p>            
-            <input type="text" name="username" value="">
-            <p>Email:</p>
+        <form class="auth-form" action="main.html" method="POST">
+            <label for="signup-username">Username:</label>            
+            <input type="text" id="signup-username" name="username" value="">
+            <label for="signup-email">Email:</label>
             <input type="email" name="email" value="">
-            <p>Password</p>
-            <input class='form-input' type="password" name="password" value="">
+            <label for="signup-password">Password</label>
+            <input type="password" id="signup-password" name="password" value="">
             <button class="button" id="signup-button" type="submit" name="button">Sign up</button>
         </form>
         <p class="auth-text">Already signed up? Go to <a href="../html/login.html"><span class="auth-link">login</span></a></p>
