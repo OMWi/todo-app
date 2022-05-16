@@ -1,21 +1,27 @@
 import { Task } from "./task.js"
 
 export class Section {
-    constructor() {
+    constructor(id, name) {
+        this.id = id;
+        this.name = name;
+        this.count = 0;
         this.tasks = [];
     }
 
-    add(task) {
+    addTask(task) {
         this.tasks.push(task);
+        this.count++;
     }
 
-    delete(id) {
+    deleteTask(id) {
+        let oldSize = this.tasks.length;
         this.tasks = this.tasks.filter(function(value, index, arr){
             return value.id !== id;
         });
+        this.count -= oldSize - this.tasks.length;
     }
 
-    get(id) {
+    getTask(id) {
         for (let i = 0; i < this.tasks.length; i++) {
             if (this.tasks[i].id === id) {
                 return this.tasks[i];
@@ -23,7 +29,7 @@ export class Section {
         }
     }
 
-    update(id, title, description, priority) {
+    updateTask(id, title, description, priority) {
         // console.log(id);
         for (let i = 0; i < this.tasks.length; i++) {
             if (this.tasks[i].id === id) {

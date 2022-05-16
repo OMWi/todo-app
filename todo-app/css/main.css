@@ -90,7 +90,8 @@
     justify-content: space-between;
     margin-bottom: 0.5rem;
     border-radius: 0.25rem;
-    padding: 0px 2px;
+    padding-top: 0.25rem;
+    padding-bottom: 0.25rem;
 }
 
 .project:hover {
@@ -100,7 +101,7 @@
 .project-name {
     font-weight: 500;
     font-size: 1.2em;
-    padding-bottom: 0.5rem;
+    /* padding-bottom: 0.5rem; */
     margin-left: 2px;
 }
 
@@ -248,4 +249,128 @@ main {
     margin-left: 0.5rem;
     font-weight: 500;
     font-size: .95em;
+}
+
+.create-project-inputform {
+    display: none;
+}
+
+.create-project-form {
+    width: 100%;
+}
+
+.create-project-input {
+    font-size: 1.2em;
+    height: 30px;
+    width: 100%;
+    text-indent: 0.25rem;
+}
+
+.create-project-buttons {
+    display: flex;
+    margin-top: 0.5rem;
+}
+
+.create-project-button-confirm {
+    padding: 0.25rem;
+    font-weight: 500;
+    font-size: 1.05em;
+}
+
+.create-project-button-cancel {
+    margin-left: 0.5rem;
+    padding: 0.25rem;
+    font-weight: 500;
+    font-size: 1.05em;
+}
+
+
+.add-section-inputform {
+    display: none;
+    height: fit-content;
+    padding: 0.75rem;
+    border: 1px solid;
+    border-radius: .5rem;
+    width: 260px;
+    background-color: white;
+}
+
+.add-section-form {
+    width: 100%; 
+}
+
+.add-section-input {
+    font-size: 1.2em;
+    height: 30px;
+    width: 100%;
+    text-indent: 0.25rem;
+}
+
+.add-section-buttons {
+    display: flex;
+    margin-top: 0.5rem;
+}
+
+.add-section-button-confirm {
+    padding: 0.25rem;
+    font-weight: 500;
+    font-size: 1.05em;
+}
+
+.add-section-button-cancel {
+    margin-left: 0.5rem;
+    padding: 0.25rem;
+    font-weight: 500;
+    font-size: 1.05em;
+}
+
+
+.add-task-inputform {
+    display: none;
+}
+
+.add-task-form {
+    width: 100%;
+}
+
+.add-task-input-container {
+    border: 1px solid;
+    border-radius: .25rem;
+    padding: .25rem;
+
+}
+
+.add-task-input {
+    font-size: 1em;
+    height: 30px;
+    width: 100%;
+    text-indent: 0.25rem;
+    border-width: 0px;
+    margin-bottom: .25rem;
+}
+
+.add-task-input-description {
+    resize: none;
+    text-indent: .25rem;
+    font-size: 0.9em;
+    border-width: 0px;
+    width: 100%;
+}
+
+.add-task-buttons {
+    display: flex;
+    margin-top: 0.5rem;
+}
+
+.add-task-button-confirm {
+    padding: 0.25rem;
+    font-weight: 500;
+    font-size: 1.05em;
+}
+
+.add-task-button-cancel {
+    margin-left: 0.5rem;
+    padding: 0.25rem;
+    font-weight: 500;
+    font-size: 1.05em;
 }
