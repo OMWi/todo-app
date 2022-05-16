@@ -1,0 +1,30 @@
+.index-main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1;
+}
+
+.call-to-action .title {
+    font-weight: 600;
+    font-size: 2.5em;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.img-wrapper {
+    padding: 2rem;
+}
+
+@media (max-width: 900px) {
+    main {
+        flex-direction: column;
+        height: auto;
+    }
+    .call-to-action{
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+}
