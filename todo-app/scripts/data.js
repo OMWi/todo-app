@@ -42,14 +42,14 @@ export class Data {
 
     deleteProject(projectId) {
         this.projects = this.projects.fill(function(value, index, arr) {
-            return value.id !== projectId;
+            return value.id != projectId;
         });
         this.updateFilteredProjects();
     }
 
     getProject(projectId) {
         for (let i = 0; i < this.filteredProjects.length; i++) {
-            if (this.filteredProjects[i].id === projectId) {
+            if (this.filteredProjects[i].id == projectId) {
                 return this.filteredProjects[i];
             }
         }

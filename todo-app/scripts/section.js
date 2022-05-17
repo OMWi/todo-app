@@ -18,14 +18,14 @@ export class Section {
     deleteTask(id) {
         let oldSize = this.tasks.length;
         this.tasks = this.tasks.filter(function(value, index, arr){
-            return value.id !== id;
+            return value.id != id;
         });
         this.count -= oldSize - this.tasks.length;
     }
 
     getTask(id) {
         for (let i = 0; i < this.tasks.length; i++) {
-            if (this.tasks[i].id === id) {
+            if (this.tasks[i].id == id) {
                 return this.tasks[i];
             }
         }
@@ -33,7 +33,7 @@ export class Section {
 
     updateTask(id, title, description, priority) {
         for (let i = 0; i < this.tasks.length; i++) {
-            if (this.tasks[i].id === id) {
+            if (this.tasks[i].id == id) {
                 this.notes[i].title = title;
                 this.notes[i].description = description;
                 this.notes[i].priority = priority;
