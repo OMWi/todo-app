@@ -164,6 +164,8 @@ main {
 .task-section-name {
     font-weight: 500;
     font-size: 1.1em;
+    word-wrap: break-word;
+    overflow: hidden;
 }
 
 .section-task-count {
@@ -197,6 +199,7 @@ main {
 .task-header-left {
     display: flex;
     align-items: center;
+    overflow: hidden;
 }
 
 .check-circle {
@@ -205,11 +208,11 @@ main {
     width: 20px;
     height: 20px;
     background-color: white;
+    flex-shrink: 0;
 }
 
 .check-circle-priority-1 {
     border-color: black;
-
 }
 
 .check-circle-priority-2 {
@@ -228,6 +231,8 @@ main {
     font-size: 1.1em;
     margin-left: 0.5rem;
     font-weight: 400;
+    word-wrap: break-word;
+    overflow: hidden;
 }
 
 .task-options {
@@ -239,6 +244,7 @@ main {
     margin-top: 0.3rem;
     font-size: 0.9em;
     font-weight: 400;
+    word-wrap: break-word;
 }
 
 

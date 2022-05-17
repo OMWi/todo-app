@@ -77,6 +77,11 @@ searchInput.addEventListener("input", (e) => {
     updateProjectUI(data, projectList, sectionList);
 })
 
+var searchForm = document.getElementsByClassName("search-form")[0];
+searchForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+})
+
 
 var data = new Data();
 data.fillData();
