@@ -7,7 +7,7 @@ export class Data {
         this.projects = [];
         this.filteredProjects = [];
         this.lastSearchString = "";
-        this.selectedProjectID = 0;
+        this.selectedProjectID = -1;
     }
 
     fillData() {
@@ -23,7 +23,11 @@ export class Data {
             }
             this.addProject(newProject);           
         }
-        this.search();
+        this.updateFilteredProjects();
+    }
+
+    updateFilteredProjects() {
+        this.filteredProjects = this.projects.filter(project => project.name.search(new RegExp(this.lastSearchString, 'i')) > -1);
     }
 
     search(searchString) {
@@ -33,14 +37,14 @@ export class Data {
 
     addProject(project) {
         this.projects.push(project);
-        this.search();
+        this.updateFilteredProjects();
     }
 
     deleteProject(projectId) {
         this.projects = this.projects.fill(function(value, index, arr) {
             return value.id !== projectId;
         });
-        this.search();
+        this.updateFilteredProjects();
     }
 
     getProject(projectId) {

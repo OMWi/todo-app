@@ -63,11 +63,10 @@ export function addTaskUI(task, taskList) {
         divTask.classList.toggle("task-selected");
     }
 
-
     taskList.appendChild(divTask);
 }
 
-export function addSectionUI(section, sectionList, data) {
+export function addSectionUI(section, sectionList, data, db, uid) {
     let taskSection = document.createElement("section");
     taskSection.setAttribute("id", "section-" + section.id);
     taskSection.classList.toggle("task-section");
@@ -157,6 +156,11 @@ export function addSectionUI(section, sectionList, data) {
         let divProjectCount = document.getElementById("project-" + data.selectedProjectID).getElementsByClassName("project-count")[0];
         data.getProject(data.selectedProjectID).updateCount();
         divProjectCount.innerHTML = data.getProject(data.selectedProjectID).count;
+
+        db.addTask(uid, newTask, section.id);
+        db.updateProject(uid, data.getProject(data.selectedProjectID));
+        db.updateSection(uid, data.getProject(data.selectedProjectID).getSection(section.id), data.selectedProjectID);
+
         addTaskUI(newTask, divTaskList);
     }
 
@@ -194,17 +198,22 @@ export function addSectionUI(section, sectionList, data) {
             let taskData = data.getProject(data.selectedProjectID).getSection(oldSectionIds[i]).getTask(taskIds[i]);
             data.getProject(data.selectedProjectID).getSection(oldSectionIds[i]).deleteTask(taskIds[i]);
             data.getProject(data.selectedProjectID).getSection(section.id).addTask(taskData);
+
+            db.updateTask(uid, taskData, section.id);
         }
         for (let i = 0; i < oldSectionIds.length; i++) {
             let oldSection = document.getElementById("section-" + oldSectionIds[i]);
             let oldSectionTaskCount = oldSection.getElementsByClassName("section-task-count")[0];
             oldSectionTaskCount.innerHTML = data.getProject(data.selectedProjectID).getSection(oldSectionIds[i]).count;
+            
+            db.updateSection(uid, data.getProject(data.selectedProjectID).getSection(oldSectionIds[i]), data.selectedProjectID);
         }
         pSectionCount.innerHTML = data.getProject(data.selectedProjectID).getSection(section.id).count;
         let divProjectCount = document.getElementById("project-" + data.selectedProjectID).getElementsByClassName("project-count")[0];
         data.getProject(data.selectedProjectID).updateCount();
         divProjectCount.innerHTML = data.getProject(data.selectedProjectID).count;
 
+        db.updateSection(uid, data.getProject(data.selectedProjectID).getSection(section.id), data.selectedProjectID);
     }
 
     sectionList.appendChild(taskSection);
