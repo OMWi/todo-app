@@ -22,6 +22,14 @@ export function addProjectUI(project, projectList, sectionList, data) {
     projectList.appendChild(divProject);
 }
 
+export function updateProjectUI(data, projectList, sectionList) {
+    let filteredProjects = data.filteredProjects;
+    projectList.innerHTML = "";
+    for (let i = 0; i < filteredProjects.length; i++) {
+        addProjectUI(filteredProjects[i], projectList, sectionList, data);
+    }
+}
+
 export function addTaskUI(task, taskList) {
     let divTask = document.createElement("div");
     divTask.setAttribute("id", "task-" + task.id);

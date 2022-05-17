@@ -2,7 +2,7 @@ import { Data } from "./data.js";
 import { Project } from "./project.js";
 import { Section } from "./section.js";
 import { Task } from "./task.js";
-import { addProjectUI, addTaskUI, addSectionUI } from "./uiGenerator.js";
+import { addProjectUI, addTaskUI, addSectionUI, updateProjectUI } from "./uiGenerator.js";
 
 var selectedProjectID = 0;
 var selectedSectionID = 0;
@@ -69,6 +69,13 @@ function addSectionHandler(event) {
     data.getProject(data.selectedProjectID).addSection(newSection);
     addSectionUI(newSection, sectionList, data);
 }
+
+var searchInput = document.getElementsByClassName("search-input")[0];
+searchInput.addEventListener("input", (e) => {
+    let searchString = e.target.value;
+    data.search(searchString);
+    updateProjectUI(data, projectList, sectionList);
+})
 
 
 var data = new Data();

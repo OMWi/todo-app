@@ -5,6 +5,8 @@ import { Task } from "./task.js";
 export class Data {
     constructor() {
         this.projects = [];
+        this.filteredProjects = [];
+        this.lastSearchString = "";
         this.selectedProjectID = 0;
     }
 
@@ -21,22 +23,30 @@ export class Data {
             }
             this.addProject(newProject);           
         }
+        this.search();
+    }
+
+    search(searchString) {
+        this.lastSearchString = searchString;
+        this.filteredProjects = this.projects.filter(project => project.name.search(new RegExp(searchString, 'i')) > -1);
     }
 
     addProject(project) {
         this.projects.push(project);
+        this.search();
     }
 
     deleteProject(projectId) {
         this.projects = this.projects.fill(function(value, index, arr) {
             return value.id !== projectId;
         });
+        this.search();
     }
 
     getProject(projectId) {
-        for (let i = 0; i < this.projects.length; i++) {
-            if (this.projects[i].id === projectId) {
-                return this.projects[i];
+        for (let i = 0; i < this.filteredProjects.length; i++) {
+            if (this.filteredProjects[i].id === projectId) {
+                return this.filteredProjects[i];
             }
         }
     }    
