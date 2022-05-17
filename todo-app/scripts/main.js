@@ -1,79 +1,86 @@
 import { Data } from "./data.js";
+import { Project } from "./project.js";
+import { Section } from "./section.js";
+import { Task } from "./task.js";
+import { addProjectUI, addTaskUI, addSectionUI } from "./uiGenerator.js";
 
-var data = new Data();
-data.fillData();
-// console.log(data);
-
-sessionStorage.setItem('data', JSON.stringify(data));
+var selectedProjectID = 0;
+var selectedSectionID = 0;
 
 var buttonSidemenu = document.getElementById("button-sidemenu");
+buttonSidemenu.onclick = function () {
+    document.getElementById("sidemenu").classList.toggle("sidenav-open")
+}
+
 
 var createProjectInputform = document.getElementById("create-project-inputform");
 var createProjectButton = document.getElementById("create-project-button");
 var createProjectConfirmButton = document.getElementById("create-project-button-confirm");
 var createProjectCancelButton = document.getElementById("create-project-button-cancel");
+createProjectButton.onclick = function () {
+    createProjectInputform.style.display = "flex";
+    createProjectButton.style.display = "none";
+}
+createProjectConfirmButton.onclick = function () {
+    createProjectInputform.style.display = "none";
+    createProjectButton.style.display = "flex";
+}
+createProjectCancelButton.onclick = function () {
+    createProjectInputform.style.display = "none";
+    createProjectButton.style.display = "flex";
+}
+
+var createProjectForm = document.getElementById("create-project-form");
+createProjectForm.addEventListener('submit', createProjectHandler);
+var projectList = document.getElementById("project-list");
+function createProjectHandler(event) {
+    event.preventDefault();
+    let projectName = createProjectForm.elements['project-name'].value;
+    let newProject = new Project(projectName);
+    data.addProject(newProject);
+    addProjectUI(newProject, projectList, sectionList, data);
+}
+
 
 var addSectionInputform = document.getElementById("add-section-inputform");
 var addSectionButton = document.getElementById("add-section");
 var addSectionConfirmButton = document.getElementById("add-section-button-confirm");
 var addSectionCancelButton = document.getElementById("add-section-button-cancel");
-
-var addTaskInputform = document.getElementById("add-task-inputform");
-var addTaskButton = document.getElementById("add-task");
-var addTaskConfirmButton = document.getElementById("add-task-button-confirm");
-var addTaskCancelButton = document.getElementById("add-task-button-cancel");
-
-
-
-buttonSidemenu.onclick = function() {
-    document.getElementById("sidemenu").classList.toggle("sidenav-open")
-    // document.getElementById("main").classList.toggle("main-sidenav-open")
-}
-
-createProjectButton.onclick = function() {
-    createProjectInputform.style.display = "flex";
-    createProjectButton.style.display = "none";
-}
-
-createProjectConfirmButton.onclick = function() {
-    createProjectInputform.style.display = "none";
-    createProjectButton.style.display = "flex";
-}
-
-createProjectCancelButton.onclick = function() {
-    createProjectInputform.style.display = "none";
-    createProjectButton.style.display = "flex";
-}
-
-
-addSectionButton.onclick = function() {
+addSectionButton.onclick = function () {
     addSectionInputform.style.display = "flex";
     addSectionButton.style.display = "none";
 }
-
-addSectionConfirmButton.onclick = function() {
+addSectionConfirmButton.onclick = function () {
+    addSectionInputform.style.display = "none";
+    addSectionButton.style.display = "flex";
+}
+addSectionCancelButton.onclick = function () {
     addSectionInputform.style.display = "none";
     addSectionButton.style.display = "flex";
 }
 
-addSectionCancelButton.onclick = function() {
-    addSectionInputform.style.display = "none";
-    addSectionButton.style.display = "flex";
+var addSectionForm = document.getElementById("add-section-form");
+addSectionForm.addEventListener('submit', addSectionHandler);
+var sectionList = document.getElementsByClassName("section-list")[0];
+function addSectionHandler(event) {
+    event.preventDefault();
+    let sectionName = addSectionForm.elements['section-name'].value;
+    let newSection = new Section(sectionName);
+    data.getProject(data.selectedProjectID).addSection(newSection);
+    addSectionUI(newSection, sectionList, data);
 }
 
 
-addTaskButton.onclick = function() {
-    addTaskInputform.style.display = "flex";
-    addTaskButton.style.display = "none";
-}
+var data = new Data();
+data.fillData();
+data.projects.forEach((project) => {
+    addProjectUI(project, projectList, sectionList, data);
+})
 
-addTaskConfirmButton.onclick = function() {
-    addTaskInputform.style.display = "none";
-    addTaskButton.style.display = "flex";
-}
-
-addTaskCancelButton.onclick = function() {
-    addTaskInputform.style.display = "none";
-    addTaskButton.style.display = "flex";
-}
-
+data.getProject(data.selectedProjectID).sections.forEach((section) => {
+    addSectionUI(section, sectionList, data);
+    // let taskList = document.getElementById("section-" + section.id).getElementsByClassName("task-list")[0];
+    // section.tasks.forEach((task) => {
+    //     addTaskUI(task, taskList);
+    // })
+})

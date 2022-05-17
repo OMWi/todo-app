@@ -52,7 +52,7 @@
 }
 
 .sidenav {
-    height: 100%;    
+    height: 100%;
     width: 0px;
     min-width: 0px;
     background-color: white;
@@ -73,7 +73,7 @@
     margin-left: 300px;
 }
 
-.sidenav > * {
+.sidenav>* {
     margin-left: 10px;
     margin-right: 10px;
 }
@@ -96,6 +96,7 @@
 
 .project:hover {
     background-color: lightgray;
+    cursor: pointer;
 }
 
 .project-name {
@@ -138,10 +139,14 @@ main {
     padding: 0.5rem;
 }
 
+.section-list {
+    display: flex;   
+}
+
 .task-section {
     border: 1px solid;
     border-radius: 0.5rem;
-    padding: 5px;
+    padding: .5rem;
     width: 260px;
     margin-right: .75rem;
     /* min-height: min-content;
@@ -189,11 +194,28 @@ main {
 }
 
 .check-circle {
-    border: 2px solid;
+    border: 3px solid;
     border-radius: 50%;
     width: 20px;
     height: 20px;
     background-color: white;
+}
+
+.check-circle-priority-1 {
+    border-color: black;
+
+}
+
+.check-circle-priority-2 {
+    border-color: blue;
+}
+
+.check-circle-priority-3 {
+    border-color: limegreen;
+}
+
+.check-circle-priority-4 {
+    border-color: red;
 }
 
 .task-name {
@@ -220,7 +242,7 @@ main {
 }
 
 .add-task:hover {
-    color: red; 
+    color: red;
 }
 
 .add-task-text {
@@ -273,6 +295,7 @@ main {
 
 .create-project-button-confirm {
     padding: 0.25rem;
+    font-family: inherit;
     font-weight: 500;
     font-size: 1.05em;
 }
@@ -280,6 +303,7 @@ main {
 .create-project-button-cancel {
     margin-left: 0.5rem;
     padding: 0.25rem;
+    font-family: inherit;
     font-weight: 500;
     font-size: 1.05em;
 }
@@ -296,7 +320,7 @@ main {
 }
 
 .add-section-form {
-    width: 100%; 
+    width: 100%;
 }
 
 .add-section-input {
@@ -312,15 +336,17 @@ main {
 }
 
 .add-section-button-confirm {
-    padding: 0.25rem;
-    font-weight: 500;
+    padding: 0.25rem 0.5rem;
+    font-family: inherit;
+    font-weight: 600;
     font-size: 1.05em;
 }
 
 .add-section-button-cancel {
     margin-left: 0.5rem;
-    padding: 0.25rem;
-    font-weight: 500;
+    padding: 0.25rem 0.5rem;
+    font-family: inherit;
+    font-weight: 600;
     font-size: 1.05em;
 }
 
@@ -355,6 +381,8 @@ main {
     font-size: 0.9em;
     border-width: 0px;
     width: 100%;
+    height: 60px;
+    overflow: hidden;
 }
 
 .add-task-buttons {
@@ -364,6 +392,7 @@ main {
 
 .add-task-button-confirm {
     padding: 0.25rem;
+    font-family: inherit;
     font-weight: 500;
     font-size: 1.05em;
 }
@@ -371,6 +400,60 @@ main {
 .add-task-button-cancel {
     margin-left: 0.5rem;
     padding: 0.25rem;
+    font-family: inherit;
     font-weight: 500;
     font-size: 1.05em;
+}
+
+.priority-container {
+    display: flex;
+    margin-top: .5rem;
+}
+
+.priority-container label {
+    /* margin-right: .5rem; */
+    padding: .5rem;
+}
+
+.priority-container label i {
+    opacity: 0.55;
+}
+
+.priority-radio-button {
+    opacity: 0;
+    position: absolute;
+}
+
+.priority-container label:hover {
+    cursor: pointer;
+}
+
+.priority-container label:hover i {
+    opacity: 1;
+    cursor: pointer;
+}
+
+.priority-container label:hover input {
+    cursor: pointer;
+}
+
+
+.priority-radio-button:checked + i {
+    opacity: 1;
+}
+
+.priority-1 {
+    color: black;
+}
+
+.priority-2 {
+    color: blue;
+}
+
+.priority-3 {
+    color: limegreen;
+}
+
+.priority-4 {
+    color: red;
 }

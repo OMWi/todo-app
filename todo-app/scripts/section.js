@@ -1,8 +1,10 @@
 import { Task } from "./task.js"
 
 export class Section {
-    constructor(id, name) {
-        this.id = id;
+    static nextId = 0;
+
+    constructor(name) {
+        this.id = Section.nextId++;
         this.name = name;
         this.count = 0;
         this.tasks = [];

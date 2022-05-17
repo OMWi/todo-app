@@ -1,8 +1,10 @@
 import { Section } from "./section.js";
 
 export class Project {
-    constructor(id, name) {
-        this.id = id;
+    static nextId = 0;
+
+    constructor(name) {
+        this.id = Project.nextId++;
         this.name = name;
         this.count = 0;
         this.sections = [];
@@ -13,12 +15,12 @@ export class Project {
         this.count += section.count;
     }
 
-    getCount() {
+    updateCount() {
         let count = 0;
         for (let i = 0; i < this.sections.length; i++) {
             count += this.sections[i].count;
         }
-        return count;
+        this.count = count;
     }
 
     deleteSection(sectionId) {
@@ -37,7 +39,6 @@ export class Project {
     }
 
     updateSection(sectionId, section) {
-        // todo: check 
         for (let i = 0; i < this.sections.length; i++) {
             if (this.sections[i].id === sectionId) {
                 this.sections[i] = section;

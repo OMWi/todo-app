@@ -5,15 +5,16 @@ import { Task } from "./task.js";
 export class Data {
     constructor() {
         this.projects = [];
+        this.selectedProjectID = 0;
     }
 
     fillData() {
         for (let projectId = 0; projectId < 2; projectId++) {
-            let newProject = new Project(projectId, "Project " + projectId);
-            for (let sectionId = 0; sectionId < 2; sectionId++) {
-                let newSection = new Section(projectId*2 + sectionId, "Section " + sectionId);
+            let newProject = new Project("Project " + projectId);
+            for (let sectionId = 0; sectionId < 1; sectionId++) {
+                let newSection = new Section("Section " + ((projectId*2) + sectionId));
                 for (let taskId = 0; taskId < 2; taskId++) {
-                    let newTask = new Task(projectId*4 + sectionId*2 + taskId, "Task " + taskId, "task description", 1);
+                    let newTask = new Task("Task " + (projectId*4 + sectionId*2 + taskId), "task description", taskId + 1);
                     newSection.addTask(newTask);
                 }
                 newProject.addSection(newSection);
