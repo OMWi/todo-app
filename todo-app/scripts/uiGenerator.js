@@ -35,21 +35,27 @@ export function addTaskUI(task, taskList) {
     divCheckCircle.classList.toggle("check-circle-priority-" + task.priority);
     let pTaskName = document.createElement("p");
     pTaskName.classList.toggle("task-name");
-    let iFA = document.createElement("i");
-    iFA.classList.toggle("task-options");
-    iFA.classList.toggle("fa-solid");
-    iFA.classList.toggle("fa-ellipsis");
-    iFA.classList.toggle("fa-lg");
+    // let iFA = document.createElement("i");
+    // iFA.classList.toggle("task-options");
+    // iFA.classList.toggle("fa-solid");
+    // iFA.classList.toggle("fa-ellipsis");
+    // iFA.classList.toggle("fa-lg");
     let pTaskDescription = document.createElement("p");
     pTaskDescription.classList.toggle("task-description");
     divTask.appendChild(divTaskHeader);
     divTask.appendChild(pTaskDescription);
     divTaskHeader.appendChild(divTaskHeaderLeft);
-    divTaskHeader.appendChild(iFA);
+    // divTaskHeader.appendChild(iFA);
     divTaskHeaderLeft.appendChild(divCheckCircle);
     divTaskHeaderLeft.appendChild(pTaskName);
     pTaskName.innerHTML = task.title;
     pTaskDescription.innerHTML = task.description;
+
+    divTask.onclick = function() {
+        divTask.classList.toggle("task-selected");
+    }
+
+
     taskList.appendChild(divTask);
 }
 
@@ -159,6 +165,38 @@ export function addSectionUI(section, sectionList, data) {
     addTaskButtonCancel.onclick = function() {
         divAddTaskInputform.style.display = "none";
         aAddTask.style.display = "flex";
+    }
+
+    sectionHeader.onclick = function() {
+        let selectedTasks = document.getElementsByClassName("task-selected");
+        let taskIds = [];
+        let oldSectionIds = [];
+        for (let i = 0; i < selectedTasks.length; i++) {
+            let oldSectionID = selectedTasks[i].parentElement.parentElement.getAttribute("id");
+            oldSectionID = parseInt(oldSectionID.charAt(oldSectionID.length - 1));
+            oldSectionIds.push(oldSectionID);
+            let taskID = selectedTasks[i].getAttribute("id");
+            taskID = parseInt(taskID.charAt(taskID.length - 1));            
+            taskIds.push(taskID);
+        }
+        for (let i = 0; i < taskIds.length; i++) {
+            let task = document.getElementById("task-" + taskIds[i]);
+            divTaskList.appendChild(task);
+            task.classList.toggle("task-selected");
+            let taskData = data.getProject(data.selectedProjectID).getSection(oldSectionIds[i]).getTask(taskIds[i]);
+            data.getProject(data.selectedProjectID).getSection(oldSectionIds[i]).deleteTask(taskIds[i]);
+            data.getProject(data.selectedProjectID).getSection(section.id).addTask(taskData);
+        }
+        for (let i = 0; i < oldSectionIds.length; i++) {
+            let oldSection = document.getElementById("section-" + oldSectionIds[i]);
+            let oldSectionTaskCount = oldSection.getElementsByClassName("section-task-count")[0];
+            oldSectionTaskCount.innerHTML = data.getProject(data.selectedProjectID).getSection(oldSectionIds[i]).count;
+        }
+        pSectionCount.innerHTML = data.getProject(data.selectedProjectID).getSection(section.id).count;
+        let divProjectCount = document.getElementById("project-" + data.selectedProjectID).getElementsByClassName("project-count")[0];
+        data.getProject(data.selectedProjectID).updateCount();
+        divProjectCount.innerHTML = data.getProject(data.selectedProjectID).count;
+
     }
 
     sectionList.appendChild(taskSection);

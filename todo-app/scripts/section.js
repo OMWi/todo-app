@@ -32,7 +32,6 @@ export class Section {
     }
 
     updateTask(id, title, description, priority) {
-        // console.log(id);
         for (let i = 0; i < this.tasks.length; i++) {
             if (this.tasks[i].id === id) {
                 this.notes[i].title = title;

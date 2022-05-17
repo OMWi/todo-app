@@ -158,6 +158,7 @@ main {
     display: flex;
     justify-content: space-between;
     margin-bottom: 10px;
+    cursor: pointer;
 }
 
 .task-section-name {
@@ -179,6 +180,11 @@ main {
 }
 
 .task:hover {
+    border: .5px solid;
+    cursor: pointer;
+}
+
+.task-selected {
     border: .5px solid;
 }
 
