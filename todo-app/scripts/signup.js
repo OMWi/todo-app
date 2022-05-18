@@ -1,7 +1,7 @@
 import { Authenticator } from "./firebase.js";
 
 var auth = new Authenticator();
-var signupForm = document.getElementById("login-form");
+var signupForm = document.getElementById("signup-form");
 signupForm.addEventListener("submit", (event) => {
     event.preventDefault();
     let email = signupForm.elements['email'].value;
