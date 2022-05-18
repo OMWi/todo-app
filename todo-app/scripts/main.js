@@ -3,15 +3,12 @@ import { Project } from "./project.js";
 import { Section } from "./section.js";
 import { Task } from "./task.js";
 import { addProjectUI, addTaskUI, addSectionUI, updateProjectUI } from "./uiGenerator.js";
-
-var selectedProjectID = 0;
-var selectedSectionID = 0;
+import { Authenticator, Database } from "./firebase.js";
 
 var buttonSidemenu = document.getElementById("button-sidemenu");
 buttonSidemenu.onclick = function () {
     document.getElementById("sidemenu").classList.toggle("sidenav-open")
 }
-
 
 var createProjectInputform = document.getElementById("create-project-inputform");
 var createProjectButton = document.getElementById("create-project-button");
@@ -38,7 +35,13 @@ function createProjectHandler(event) {
     let projectName = createProjectForm.elements['project-name'].value;
     let newProject = new Project(projectName);
     data.addProject(newProject);
-    addProjectUI(newProject, projectList, sectionList, data);
+    addProjectUI(newProject, projectList, sectionList, data, db, uid);
+    data.selectedProjectID = newProject.id;
+    sectionList.innerHTML = "";
+    for (let i = 0; i < data.getProject(newProject.id).sections.length; i++) {
+        addSectionUI(data.getProject(newProject.id).sections[i], sectionList, data);
+    }
+    db.addProject(uid, newProject);
 }
 
 
@@ -64,10 +67,14 @@ addSectionForm.addEventListener('submit', addSectionHandler);
 var sectionList = document.getElementsByClassName("section-list")[0];
 function addSectionHandler(event) {
     event.preventDefault();
+    if (data.selectedProjectID == -1) {
+        return;
+    }
     let sectionName = addSectionForm.elements['section-name'].value;
     let newSection = new Section(sectionName);
     data.getProject(data.selectedProjectID).addSection(newSection);
-    addSectionUI(newSection, sectionList, data);
+    addSectionUI(newSection, sectionList, data, db, uid);
+    db.addSection(uid, newSection, data.selectedProjectID);
 }
 
 var searchInput = document.getElementsByClassName("search-input")[0];
@@ -84,15 +91,29 @@ searchForm.addEventListener("submit", (e) => {
 
 
 var data = new Data();
-data.fillData();
-data.projects.forEach((project) => {
-    addProjectUI(project, projectList, sectionList, data);
+const db = new Database();
+var uid = sessionStorage.getItem("uid");
+if (String(uid) == String(null)) {
+    window.location = "../index.html"
+}
+let userProjects = db.getProjects(uid);
+userProjects.then((projects) => {
+    data.projects = projects;
+    if (projects.length == 0) {
+        return;
+    }
+    data.selectedProjectID = data.projects[0].id;
+    data.updateFilteredProjects();
+    data.projects.forEach((project) => {
+        addProjectUI(project, projectList, sectionList, data, db, uid);
+    })
+    data.getProject(data.selectedProjectID).sections.forEach((section) => {
+        addSectionUI(section, sectionList, data, db, uid);
+    })
 })
 
-data.getProject(data.selectedProjectID).sections.forEach((section) => {
-    addSectionUI(section, sectionList, data);
-    // let taskList = document.getElementById("section-" + section.id).getElementsByClassName("task-list")[0];
-    // section.tasks.forEach((task) => {
-    //     addTaskUI(task, taskList);
-    // })
-})
+var logout = document.getElementsByClassName("logout")[0];
+logout.onclick = function() {
+    sessionStorage.setItem("uid", null);
+    window.location = "../index.html";
+}

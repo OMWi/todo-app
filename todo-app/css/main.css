@@ -10,6 +10,10 @@
     align-items: center;
 }
 
+#button-sidemenu:hover {
+    cursor: pointer;
+}
+
 .search-form {
     width: 160px;
 }
@@ -35,14 +39,15 @@
     align-items: center;
 }
 
+.logout:hover {
+    color: red;
+    cursor: pointer;
+}
+
 .logout-text {
     margin-right: .5rem;
     font-weight: 400;
     font-size: 1.1rem;
-}
-
-.logout-text:hover {
-    color: red;
 }
 
 

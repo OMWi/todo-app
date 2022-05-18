@@ -25,14 +25,14 @@ export class Project {
 
     deleteSection(sectionId) {
         this.sections = this.sections.filter(function(value, index, arr) {
-            return value.id !== sectionId;
+            return value.id != sectionId;
         });
         this.count = this.getCount();
     }
 
     getSection(sectionId) {
         for (let i = 0; i < this.sections.length; i++) {
-            if (this.sections[i].id === sectionId) {
+            if (this.sections[i].id == sectionId) {
                 return this.sections[i];
             }
         }
@@ -40,7 +40,7 @@ export class Project {
 
     updateSection(sectionId, section) {
         for (let i = 0; i < this.sections.length; i++) {
-            if (this.sections[i].id === sectionId) {
+            if (this.sections[i].id == sectionId) {
                 this.sections[i] = section;
                 break;
             }
