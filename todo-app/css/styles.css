@@ -96,6 +96,7 @@ header.header {
     padding: 0.75rem 2.25rem;
     border-radius: 0.75rem;
     text-decoration: none;
+    font-family: inherit;
     font-weight: 600;
     font-size: 1.5em;
 }
