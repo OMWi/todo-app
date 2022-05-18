@@ -1,9 +1,9 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.8.1/firebase-app.js";
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.8.1/firebase-auth.js";
 import { getDatabase, ref, get, set, update, remove } from "https://www.gstatic.com/firebasejs/9.8.1/firebase-database.js";
 import { Project } from "./project.js";
 import { Section } from "./section.js";
 import { Task } from "./task.js";
-
 
 const firebaseConfig = {
     apiKey: "AIzaSyBW9Vf6F3f2EnZY9JS9ZitWXu07Im3WX1I",
@@ -16,9 +16,39 @@ const firebaseConfig = {
     measurementId: "G-SVSJGPNVQK"
 };
 
-
 const app = initializeApp(firebaseConfig);
+const auth = getAuth(app)
 const database = getDatabase(app);
+export class Authenticator {
+    constructor() {
+        this.auth = auth;
+    }
+    async signup(email, password) {
+        return createUserWithEmailAndPassword(this.auth, email, password)
+            .then((userCredential) => {
+                return userCredential;
+            })
+            .catch((error) => {
+                return error;
+            });
+    }
+    async login(email, password) {
+        return signInWithEmailAndPassword(this.auth, email, password)
+            .then((userCredential) => {
+                return userCredential;
+            })
+            .catch((error) => {
+                return error;
+            });
+    }
+    validateEmail(email) {
+        var regexp = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        return regexp.test(String(email).toLowerCase());
+    }
+    validatePassword(value) {
+        return value.length > 7;
+    }
+}
 
 export class Database {
     constructor() {

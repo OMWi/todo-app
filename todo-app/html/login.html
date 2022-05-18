@@ -5,7 +5,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/styles.css">
-    <link rel="stylesheet" href="../css/login.css">
     <title>Log in</title>
 </head>
 <body class="auth-body">
@@ -15,7 +14,7 @@
             <p class="logo-name">todo</p>
         </div>
         <p class="auth-name">Log in</p>
-        <form class="auth-form" action="main.html" method="get">
+        <form id="login-form" class="auth-form" action="login.html" method="post">
             <label for="login-email">Email:</label>
             <input type="email" id="login-email" name="email" value="">
             <label for="login-password">Password:</label>
@@ -23,6 +22,8 @@
             <button class="button" id="login-button" type="submit" name="button">Log in</button>
         </form>
         <p class="auth-text">Don't have an account? <a href="../html/signup.html"><span class="auth-link">Sign up</span></a></p>
-    </main>    
+    </main>  
+    <script type="module" src="../scripts/login.js"></script>  
+    <script type="module" src="../scripts/firebase.js"></script>
 </body> 
 </html>

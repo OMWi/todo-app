@@ -86,7 +86,7 @@ header.header {
     font-size: larger;
 }
 
-.navbar a:hover, .logo-name:hover {
+.navbar a:hover {
     color: red;
 }
 
@@ -99,6 +99,7 @@ header.header {
     font-family: inherit;
     font-weight: 600;
     font-size: 1.5em;
+    cursor: pointer;
 }
 
 .full-height-grow {
