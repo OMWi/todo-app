@@ -35,7 +35,7 @@ function createProjectHandler(event) {
     let projectName = createProjectForm.elements['project-name'].value;
     let newProject = new Project(projectName);
     data.addProject(newProject);
-    addProjectUI(newProject, projectList, sectionList, data);
+    addProjectUI(newProject, projectList, sectionList, data, db, uid);
     data.selectedProjectID = newProject.id;
     sectionList.innerHTML = "";
     for (let i = 0; i < data.getProject(newProject.id).sections.length; i++) {
@@ -105,7 +105,7 @@ userProjects.then((projects) => {
     data.selectedProjectID = data.projects[0].id;
     data.updateFilteredProjects();
     data.projects.forEach((project) => {
-        addProjectUI(project, projectList, sectionList, data);
+        addProjectUI(project, projectList, sectionList, data, db, uid);
     })
     data.getProject(data.selectedProjectID).sections.forEach((section) => {
         addSectionUI(section, sectionList, data, db, uid);

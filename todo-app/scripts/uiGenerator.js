@@ -1,6 +1,6 @@
 import { Task } from "./task.js";
 
-export function addProjectUI(project, projectList, sectionList, data) {
+export function addProjectUI(project, projectList, sectionList, data, db, uid) {
     let divProject = document.createElement("div");
     let projectName = document.createElement("p");
     let projectCount = document.createElement("p");
@@ -16,7 +16,7 @@ export function addProjectUI(project, projectList, sectionList, data) {
         data.selectedProjectID = project.id;
         sectionList.innerHTML = "";
         for (let i = 0; i < data.getProject(project.id).sections.length; i++) {
-            addSectionUI(data.getProject(project.id).sections[i], sectionList, data);
+            addSectionUI(data.getProject(project.id).sections[i], sectionList, data, db, uid);
         }
     }
     projectList.appendChild(divProject);
