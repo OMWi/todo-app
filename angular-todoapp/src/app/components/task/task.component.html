@@ -1,0 +1,20 @@
+<a [ngClass]="taskClass" *ngIf="task" (click)="onTaskClick(task)">
+    <div class="task-header">
+        <div class="task-header-left">
+            <div class="check-circle check-circle-priority-{{task.priority}}"></div>
+            <p class="task-name">{{task.title}}</p>
+        </div>
+        <div class="task-header-right">
+            <div class="data-icons">
+                <a (click)="onDeleteTask()" class="data-icon">
+                    <fa-icon [icon]="deleteIcon" size="lg" class="data-icons"></fa-icon>
+                </a>
+                <!-- <a (click)="onEditTask()" class="data-icon">
+                    <fa-icon [icon]="editIcon" size="lg" class="data-icons"></fa-icon>
+                </a> -->
+            </div>
+        </div>
+    </div>
+    <p class="task-description">{{task.description}}</p>
+
+</a>

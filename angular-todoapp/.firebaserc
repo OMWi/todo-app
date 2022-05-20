@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "itirod-data": {
+      "hosting": {
+        "angular-todoapp": [
+          "itirod-data"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "itirod-data"
+  }
+}

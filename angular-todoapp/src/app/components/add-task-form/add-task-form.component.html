@@ -1,0 +1,28 @@
+<form class="add-task-form" [formGroup]="addTaskForm" (ngSubmit)="onSubmit()">
+    <div class="add-task-input-container">
+        <input class="add-task-input" type="text" placeholder="Task name" formControlName="name">
+        <textarea class="add-task-input-description" name="description" placeholder="Description" formControlName="description"></textarea>
+        <div class="priority-container">
+            <label>
+                <input type="radio" name="priority" value="1" class="priority-radio-button" formControlName="priority">
+                <fa-icon [icon]="priorityIcon" class="priority-1" size="lg"></fa-icon>
+            </label>
+            <label>
+                <input type="radio" name="priority" value="2" class="priority-radio-button" formControlName="priority">
+                <fa-icon [icon]="priorityIcon" class="priority-2" size="lg"></fa-icon>
+            </label>
+            <label>
+                <input type="radio" name="priority" value="3" class="priority-radio-button" formControlName="priority">
+                <fa-icon [icon]="priorityIcon" class="priority-3" size="lg"></fa-icon>
+            </label>
+            <label>
+                <input type="radio" name="priority" value="4" class="priority-radio-button" formControlName="priority">
+                <fa-icon [icon]="priorityIcon" class="priority-4" size="lg"></fa-icon>
+            </label>
+        </div>
+    </div>
+    <div class="add-task-buttons">
+        <button class="add-task-button-confirm" type="submit" name="add-task-button">Add task</button>
+        <button class="add-task-button-cancel" type="button" (click)="onClose()">Cancel</button>
+    </div>
+</form>

@@ -1,0 +1,28 @@
+<main id="main" class="main">
+    <app-section *ngFor="let section of data.getSections(data.selectedProjectId)" [id]="section.id"></app-section>
+
+    <div [ngClass]="addSectionClass">
+        <a id="add-section" class="add-section" (click)="onAddSection()">
+            <div class="fa-solid fa-plus fa-xl"></div>
+            <fa-icon [icon]="addIcon" size="2x"></fa-icon>
+            <p class="add-section-text">Add section</p>
+        </a>
+    </div>
+    
+
+    <div [ngClass]="addSectionFormClass">
+        <div id="add-section-inputform" class="add-section-inputform">
+            <form id="add-section-form" class="add-section-form" method="post" (ngSubmit)="onSubmit()" [formGroup]="formGroup">
+                <input class="add-section-input" type="text" placeholder="Name this section" name="section-name"
+                    formControlName="sectionName">
+                <div class="add-section-buttons">
+                    <button id="add-section-button-confirm" class="add-section-button-confirm" type="submit"
+                        name="add-section-button">Add section</button>
+                    <button id="add-section-button-cancel" class="add-section-button-cancel"
+                        type="button" (click)="toggleVisibility()">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+</main>

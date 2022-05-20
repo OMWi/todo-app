@@ -1,0 +1,35 @@
+<section class="task-section">
+    <header class="task-section-header" (click)="onSectionHeaderClick()">
+        <div [ngClass]="sectionHeaderContainerClass">
+            <p class="task-section-name">{{data.getSection(id!)!.name}}</p>
+            <div class="data-icons">
+                <a (click)="onDeleteSection()" class="data-icon">
+                    <fa-icon [icon]="deleteIcon" size="lg" class="data-icons"></fa-icon>
+                </a>
+                <a (click)="onEditSection()" class="data-icon">
+                    <fa-icon [icon]="editIcon" size="lg" class="data-icons"></fa-icon>
+                </a>
+            </div>
+        </div>
+        <div [ngClass]="editSectionClass">
+            <form method="post" class="edit-section-form" (ngSubmit)="onEditSubmit()">
+                <input type="text" placeholder="Name this section" name="section-name" [(ngModel)]="sectionName">
+                <div class="create-project-buttons">
+                    <button class="create-project-button-confirm" type="submit"
+                        name="create-project-button">Edit section</button>
+                </div>
+            </form>
+        </div>
+
+    </header>
+    <app-task *ngFor="let task of data.getTasks(id!)" [task]="task"></app-task>
+    <div [ngClass]="addTaskClass">
+        <a class="add-task" (click)="toggleVisibility()">
+            <fa-icon [icon]="addIcon" size="2x"></fa-icon>
+            <p class="add-task-text">Add task</p>
+        </a>
+    </div>
+
+    <app-add-task-form [ngClass]="addTaskFormClass" [sectionId]="id!" (closeEvent)="toggleVisibility()"
+        (submitEvent)="onAddTask($event)"></app-add-task-form>
+</section>

@@ -1,0 +1,131 @@
+.sidemenu {
+    height: 100%;
+    width: 0px;
+    min-width: 0px;
+    background-color: white;
+    overflow: hidden;
+    /* position: fixed; */
+    padding-top: 5px;
+    transition: 0.3s;
+    display: flex;
+    flex-direction: column;
+}
+
+.sidemenu-open {
+    width: 300px;
+    min-width: 300px;
+}
+
+.main-sidemenu-open {
+    margin-left: 300px;
+}
+
+.sidemenu > * {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.sidemenu-name {
+    font-weight: 700;
+    font-size: 1.25em;
+    padding-bottom: 1rem;
+}
+
+.project {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 0.5rem;
+    border-radius: 0.25rem;
+    padding-top: 0.25rem;
+    padding-bottom: 0.25rem;
+}
+
+.project-name-container {
+    width: 100%;
+    padding: 0.2rem .25rem;
+    border-radius: .25rem;
+}
+
+.project-name-container:hover {
+    background-color: lightgray;
+    cursor: pointer;
+
+}
+
+.project-name {
+    font-weight: 500;
+    font-size: 1.2em;
+}
+
+.project-task-count {
+    font-weight: 400;
+    font-size: 1.1em;
+    color: #000000AA;
+}
+
+.create-project {
+    display: flex;
+    align-items: center;
+}
+
+.create-project:hover {
+    color: red;
+    cursor: pointer;
+}
+
+.fav-icon {
+    height: 30px;
+    width: 30px;
+    background-color: black;
+}
+
+.create-project-text {
+    margin-left: 0.5rem;
+    font-weight: 500;
+}
+
+.create-project-form {
+    width: 100%;
+}
+
+.create-project-input {
+    font-size: 1.2em;
+    height: 30px;
+    width: 100%;
+    text-indent: 0.25rem;
+}
+
+.create-project-buttons {
+    display: flex;
+    margin-top: 0.5rem;
+}
+
+.create-project-button-confirm {
+    padding: 0.25rem;
+    font-family: inherit;
+    font-weight: 500;
+    font-size: 1.05em;
+}
+
+.create-project-button-cancel {
+    margin-left: 0.5rem;
+    padding: 0.25rem;
+    font-family: inherit;
+    font-weight: 500;
+    font-size: 1.05em;
+}
+
+.create-project-button-confirm:hover,
+.create-project-button-cancel:hover {
+    cursor: pointer;
+}
+
+.data-icons {
+    margin-left: .5rem;
+}
+
+.data-icons:hover {
+    cursor: pointer;
+    color: red;
+}
