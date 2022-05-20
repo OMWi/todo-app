@@ -1,44 +1,22 @@
-import { Task } from "./task";
-
 export class Section {
     static nextId: number = 0;
     id: number;
     name: string;
-    tasks: Task[];
+    projectId: number;
 
-    constructor(name: string) {
+    constructor(name: string, projectId: number) {
         this.id = Section.nextId++;
         this.name = name;
-        this.tasks = [];
-    }
-
-    addTask(task: Task) {
-        this.tasks.push(task);
-    }
-
-    deleteTask(id: number) {
-        this.tasks = this.tasks.filter(function(value, index, arr){
-            return value.id != id;
-        });
-    }
-
-    getTask(id: number): Task | undefined {
-        for (let i = 0; i < this.tasks.length; i++) {
-            if (this.tasks[i].id == id) {
-                return this.tasks[i];
-            }
+        this.projectId = projectId;
+        if (!name) {
+            this.name = "";
         }
-        return undefined;   
     }
 
-    updateTask(id: null, title: string, description: string, priority: number) {
-        for (let i = 0; i < this.tasks.length; i++) {
-            if (this.tasks[i].id == id) {
-                this.tasks[i].title = title;
-                this.tasks[i].description = description;
-                this.tasks[i].priority = priority;
-                break;
-            }
+    setId(id: number) {
+        this.id = id;
+        if (id > Section.nextId) {
+            Section.nextId = id + 1;
         }
     }
 }

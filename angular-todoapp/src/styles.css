@@ -90,6 +90,10 @@ a {
     cursor: pointer;
 }
 
+.hidden {
+    display: none;
+}
+
 /* may be delete this */
 .full-height-grow {
     display: flex;

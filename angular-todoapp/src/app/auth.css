@@ -1,0 +1,60 @@
+:host {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #FFF4EA;
+    height: 100%;
+}
+
+.auth-main {
+    width: 320px;
+    background-color: white;
+    border: 1px solid black;
+    border-radius: 0.75rem;
+    padding: 1rem;
+}
+
+.auth-form{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+}
+
+.auth-form input {
+    height: 26px;
+}
+
+.auth-main * {
+    width: 100%;
+}
+
+.auth-name {
+    font-weight: 700;
+    font-size: x-large;
+    margin-bottom: 0.75rem;
+}
+
+.auth-form label {
+    font-weight: 600;
+    font-size: large;
+    margin-bottom: 0.3rem;
+}
+
+.auth-form input {
+    margin-bottom: 0.5rem;
+    font-size: large;
+}
+
+.auth-form button {
+    margin-bottom: 0.5rem;
+}   
+
+.auth-link {
+    color: red;
+}
+
+.auth-link:hover {
+    color: blue;
+}

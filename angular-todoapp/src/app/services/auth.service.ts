@@ -11,6 +11,7 @@ export class AuthService {
   constructor(private fireAuth: AngularFireAuth, private router: Router) { }
 
   login(user: User) {
+    console.log("user in login " + JSON.stringify(user));
     this.fireAuth.signInWithEmailAndPassword(user.email, user.password)
       .then(value => {
         let uid = value!['user']!['uid'];
@@ -21,7 +22,6 @@ export class AuthService {
       }).catch(err => {
         alert('Login error: ' + err.message);
       });
-
   }
 
   signup(user: User) {

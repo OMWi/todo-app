@@ -19,7 +19,7 @@ export class FirebaseService {
   addSection(uid: string, section: Section, projectId: number) {
     this.db.database.ref(uid + "/sections/" + section.id).set({
       "name": section.name,
-      "projectId": projectId
+      "projectID": projectId
     })
   }
   addTask(uid: string, task: Task) {
@@ -27,11 +27,12 @@ export class FirebaseService {
       "title": task.title,
       "description": task.description,
       "priority": task.priority,
-      "sectionId": task.sectionId
+      "sectionID": task.sectionId
     })
   }
 
   updateProject(uid: string, project: Project) {
+    // console.log("db update projs start");
     this.db.database.ref(uid + "/projects/" + project.id).update({
       "name": project.name
     })
@@ -39,7 +40,7 @@ export class FirebaseService {
   updateSection(uid: string, section: Section, projectId: number) {
     this.db.database.ref(uid + "/sections/" + section.id).update({
       "name": section.name,
-      "projectId": projectId
+      "projectID": projectId
     })
   }
   updateTask(uid: string, task: Task) {
@@ -47,7 +48,7 @@ export class FirebaseService {
       "title": task.title,
       "description": task.description,
       "priority": task.priority,
-      "sectionId": task.sectionId
+      "sectionID": task.sectionId
     })
   }
 
@@ -61,13 +62,13 @@ export class FirebaseService {
     return this.db.database.ref(uid + "/tasks").get();
   }
 
-  deleteProject(uid: string, projectId: number) {
-    this.db.database.ref(uid + "/projects/" + projectId).remove();
+  deleteProject(uid: string, project: Project) {
+    this.db.database.ref(uid + "/projects/" + project.id).remove();
   }
-  deleteSection(uid: string, sectionId: number) {
-    this.db.database.ref(uid + "/sections/" + sectionId).remove();
+  deleteSection(uid: string, section: Section) {
+    this.db.database.ref(uid + "/sections/" + section.id).remove();
   }
-  deleteTask(uid: string, taskId: number) {
-    this.db.database.ref(uid + "/tasks/" + taskId).remove();
+  deleteTask(uid: string, task: Task) {
+    this.db.database.ref(uid + "/tasks/" + task.id).remove();
   }
 }

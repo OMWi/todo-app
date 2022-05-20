@@ -1,0 +1,93 @@
+:host {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.task {
+    margin-bottom: 0.75rem;
+    background-color: #E5E5E5;
+    padding: .5rem;
+    border-radius: .5rem;
+    width: 100%;
+}
+
+.task:hover {
+    border: .5px solid;
+    cursor: pointer;
+}
+
+.task-selected {
+    border: .5px solid;
+}
+
+.task-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.task-header-left {
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+}
+
+.check-circle {
+    border: 3px solid;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    background-color: white;
+    flex-shrink: 0;
+}
+
+.check-circle-priority-1 {
+    border-color: black;
+}
+
+.check-circle-priority-2 {
+    border-color: blue;
+}
+
+.check-circle-priority-3 {
+    border-color: limegreen;
+}
+
+.check-circle-priority-4 {
+    border-color: red;
+}
+
+.task-name {
+    font-size: 1.1em;
+    margin-left: 0.5rem;
+    font-weight: 400;
+    word-wrap: break-word;
+    overflow: hidden;
+}
+
+.task-options {
+    visibility: visible;
+}
+
+
+.task-description {
+    margin-top: 0.3rem;
+    font-size: 0.9em;
+    font-weight: 400;
+    word-wrap: break-word;
+}
+
+.data-icons {
+    display: flex;
+    flex-direction: column;
+}
+
+.data-icons a {
+    margin-bottom: .5rem;
+}
+
+.data-icon:hover {
+    cursor: pointer;
+    color: red;
+}

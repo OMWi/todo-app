@@ -1,0 +1,104 @@
+.add-task-form {
+    width: 100%;
+}
+
+.add-task-input-container {
+    border: 1px solid;
+    border-radius: .25rem;
+    padding: .25rem;
+}
+
+.add-task-input {
+    font-size: 1em;
+    height: 30px;
+    width: 100%;
+    text-indent: 0.25rem;
+    border-width: 0px;
+    margin-bottom: .25rem;
+}
+
+.add-task-input-description {
+    resize: none;
+    text-indent: .25rem;
+    font-size: 0.9em;
+    border-width: 0px;
+    width: 100%;
+    height: 60px;
+    overflow: hidden;
+}
+
+.add-task-buttons {
+    display: flex;
+    margin-top: 0.5rem;
+}
+
+.add-task-button-confirm {
+    padding: 0.25rem;
+    font-family: inherit;
+    font-weight: 500;
+    font-size: 1.05em;
+    cursor: pointer;
+}
+
+.add-task-button-cancel {
+    margin-left: 0.5rem;
+    padding: 0.25rem;
+    font-family: inherit;
+    font-weight: 500;
+    font-size: 1.05em;
+    cursor: pointer;
+}
+
+.priority-container {
+    display: flex;
+    margin-top: .5rem;
+}
+
+.priority-container label {
+    /* margin-right: .5rem; */
+    padding: .5rem;
+}
+
+.priority-radio-button {
+    opacity: 0;
+    position: absolute;
+}
+
+.priority-container label:hover {
+    cursor: pointer;
+}
+
+.priority-container label:hover fa-icon {
+    opacity: 1;
+    cursor: pointer;
+    /* border: 3px solid; */
+}
+
+.priority-container label:hover input {
+    cursor: pointer;
+}
+
+.priority-container label fa-icon {
+    opacity: 0.55;
+}
+
+
+.priority-container label .priority-radio-button:checked + fa-icon {
+    opacity: 1;
+}
+
+.priority-1 {
+    color: black;
+}
+
+.priority-2 {
+    color: blue;
+}
+
+.priority-3 {
+    color: limegreen;
+}
+
+.priority-4 {
+    color: red;
+}

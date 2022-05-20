@@ -1,0 +1,53 @@
+<aside id="sidemenu" class="sidemenu">
+    <p class="sidemenu-name">Projects:</p>
+    <div *ngFor="let project of projects">
+        <div [ngClass]="projectContainerClass">
+            <div class="project">
+                <a (click)="selectProject(project.id)" class="project-name-container">
+                    <p class="project-name">{{project.name}}</p>
+                </a>
+                <a (click)="onDeleteProject(project)">
+                    <fa-icon [icon]="deleteIcon" size="lg" class="data-icons"></fa-icon></a>
+                <a (click)="onEditProject(project)">
+                    <fa-icon [icon]="editIcon"  size="lg" class="data-icons"></fa-icon>
+                </a>
+            </div>  
+        </div>
+         
+        <div [ngClass]="addProjectInputClass">
+            <form class="create-project-form" method="post" (ngSubmit)="onEditSubmit(project)">
+                <input class="create-project-input" type="text" placeholder="Name this project" name="project-name"
+                    [(ngModel)]="projectName">
+                <div class="create-project-buttons">
+                    <button class="create-project-button-confirm" type="submit"
+                        name="create-project-button">Edit project</button>
+                    <button class="create-project-button-cancel" type="button"
+                        (click)="toggleEditVisibility()">Cancel</button>
+                </div>
+            </form>
+        </div>     
+    </div>
+    <!-- <a class="project" *ngFor="let project of projects" (click)="selectProject(project.id)">
+        <p class="project-name">{{project.name}}</p>
+    </a> -->
+    <div [ngClass]="createProjectClass">
+        <a id="create-project-button" class="create-project" (click)="toggleVisibility()">
+            <div class="fa-solid fa-plus fa-xl"></div>
+            <fa-icon [icon]="createIcon" size="2x"></fa-icon>
+            <p class="create-project-text">Create project</p>
+        </a>
+    </div>
+
+    <div [ngClass]="createProjectInputClass">
+        <form id="create-project-form" class="create-project-form" method="post" (ngSubmit)="onSubmit()">
+            <input class="create-project-input" type="text" placeholder="Name this project" name="project-name"
+                [(ngModel)]="projectName">
+            <div class="create-project-buttons">
+                <button id="create-project-button-confirm" class="create-project-button-confirm" type="submit"
+                    name="create-project-button">Create project</button>
+                <button id="create-project-button-cancel" class="create-project-button-cancel" type="button"
+                    (click)="toggleVisibility()">Cancel</button>
+            </div>
+        </form>
+    </div>
+</aside>

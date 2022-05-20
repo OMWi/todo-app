@@ -1,0 +1,18 @@
+<header class="header">
+    <div class="left-header-block">
+        <a id="button-sidemenu" (click)="onButtonSidemenuClick()">
+            <fa-icon [icon]="menuIcon" size="2x"></fa-icon>
+        </a>
+        <form class="search-form" action="index.html" method="GET">
+            <input class='search-input' type="search" name="search-term" value="" placeholder="Search"
+                [(ngModel)]="searchStr" (ngModelChange)="onSearchChange($event)">
+        </form>
+        <!-- <p class="header-project-name">Current project:{{projectName}}</p> -->
+    </div>
+    <div class="right-header-block">
+        <a class="logout" (click)="onLogoutClick()">
+            <p class="logout-text">Log out</p>
+            <fa-icon [icon]="userIcon" size="2x"></fa-icon>
+        </a>
+    </div>
+</header>

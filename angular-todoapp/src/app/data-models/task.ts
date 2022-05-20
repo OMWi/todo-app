@@ -12,5 +12,18 @@ export class Task {
         this.description = description;
         this.priority = priority;
         this.sectionId = sectionId;
+        if (!title) {
+            this.title = "";
+        }
+        if (!description) {
+            this.description = "";
+        }
     }   
+
+    setId(id: number) {
+        this.id = id;
+        if (id > Task.nextId) {
+            Task.nextId = id + 1;
+        }
+    }
 }
