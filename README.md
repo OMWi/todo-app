@@ -1,5 +1,4 @@
 # Time-management app, like ToDoist
-### Красовский Владислав 953504
 ## [Deploy](https://omwi.github.io/)
 ## [Mock-up](https://www.figma.com/file/KJNqBirOFlj0bsaA3iY1ZW/Time-Management-App?node-id=0%3A1)
 Приложение для создания todo листов. Возможность создания проектов, делящихся на секции в которые можно добавлять задачи
